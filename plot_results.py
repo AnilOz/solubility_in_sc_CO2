@@ -13,6 +13,3 @@ def write_to_excel(x, y, path=''):
     df.to_excel(writer, index=False)
     wb.save('ExcelFiles\y_naph_PRK_coethanol.xlsx')
 
-y_naph_eth = pd.read_excel('ExcelFiles\y_naph_PRK_coethanol.xlsx',)
-print(y_naph_eth[1])
-
