@@ -89,7 +89,7 @@ def find_solubility(v_solid, P_num, P_sub_num, R_num, T_num, a_1, a_2, b_1, b_2,
     b_mix_num_f = b_mix(1 - y_init, y_init, b_1, b_2, l_num)
 
     a_s_num_f = a_star(y_init, 1 - y_init, a_2, a_1, k_num)
-    b_s_num_f = b_star(y_init, 1 - y_init, b_2, b_1, l_num)
+    b_s_num_f = b_star(y_init, 1 - y_init, b_2, b_1, b_mix_num_f, l_num)
 
     Z_f = Z_PRK(P_num, T_num, R_num, a_mix_num_f, b_mix_num_f)
 
@@ -98,8 +98,9 @@ def find_solubility(v_solid, P_num, P_sub_num, R_num, T_num, a_1, a_2, b_1, b_2,
 
     else:
         Z_num_f = np.amax(Z_f)
-        ln_phi_scf_num_f = fugacity_scf(P_num, R_num, T_num, Z_num_f, a_mix_num_f, b_mix_num_f, a_s_num_f, b_2)  
+        ln_phi_scf_num_f = fugacity_scf(P_num, R_num, T_num, Z_num_f, a_mix_num_f, b_mix_num_f, a_s_num_f, b_s_num_f)  
         y_solu = y_init*np.exp(v_solid * (P_num - P_sub_num)/(R_num*T_num))/np.exp(ln_phi_scf_num_f)
+
     y = [y_init, y_solu]
     
     while np.abs(y[-1] - y[-2])/y[-1]> 0.001:        
@@ -108,11 +109,11 @@ def find_solubility(v_solid, P_num, P_sub_num, R_num, T_num, a_1, a_2, b_1, b_2,
         b_mix_num = b_mix(1 - y[-1], y[-1], b_1, b_2, l_num)
 
         a_s_num = a_star(y[-1], 1-y[-1], a_2, a_1, k_num)
-        b_s_num = b_star(y[-1], 1-y[-1], b_2, b_1, l_num)
+        b_s_num = b_star(y[-1], 1-y[-1], b_2, b_1, b_mix_num, l_num)
 
 
-        Z_num = Z_PRK(P_num, T_num, R_num, a_mix_num, b_mix_num)
-        ln_phi_scf_num_f = fugacity_scf(P_num, R_num, T_num, Z_num, a_mix_num, b_mix_num, a_s_num, b_2) 
+        Z_num = np.amax(Z_PRK(P_num, T_num, R_num, a_mix_num, b_mix_num))
+        ln_phi_scf_num_f = fugacity_scf(P_num, R_num, T_num, Z_num, a_mix_num, b_mix_num, a_s_num, b_s_num) 
         y_sol = y_init*np.exp(v_solid * (P_num - P_sub_num)/(R_num*T_num))/np.exp(ln_phi_scf_num_f)
 
         y.append(y_sol)

@@ -225,7 +225,7 @@ def b_mix(y1, y2, b_1_num, b_2_num, l_num, disp=False):
     return b_mix_num
 
 
-def b_star(y1, y2, b_1_num, b_2_num, l_num, b_mix_num, disp=False):
+def b_star(y1, y2, b_1_num, b_2_num, b_mix_num, l_num, disp=False):
 
     """ b_mix for the solutions with cosolvents (Three component system)
 
@@ -236,14 +236,11 @@ def b_star(y1, y2, b_1_num, b_2_num, l_num, b_mix_num, disp=False):
 
     j, b_1, b_2, b_mix = sp.symbols('j b_1 b_2 b_mix')
 
-
     y_num = np.array([y1, y2])
     y_indexed = sp.IndexedBase('y')
     l_indexed = sp.IndexedBase('l')
 
-    b_s = 2 * sp.Sum(y_indexed[j]*sp.Indexed('b', (0,j)), (j,0,1)) - b_mix 
-
-
+    b_s = 2 * sp.Sum(y_indexed[j]*sp.Indexed('b', (0,j)), (j,0,1)) - b_mix  
     b_matrix = sp.Matrix([[0.5*(1-l_indexed[0,0])*(b_1+b_1), 0.5*(1-l_indexed[0,1])*(b_1+b_2)]]) 
     b_s_1 = b_s.replace(sp.Indexed('b', (0,j)), b_matrix[0,j])
     b_s_2 = b_s_1.doit()
