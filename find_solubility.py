@@ -1,7 +1,6 @@
 from fugacity_coeff import fugacity_scf
-from mixing_parameters import a_mix, a_PRK, alpha, b_mix, b_PRK, a_star, b_star, a_m_cosolvent, a_s_cosolvent, b_m_cosolvent, b_s_cosolvent
+from mixing_parameters import a_mix, b_mix, a_star, b_star, a_m_cosolvent, a_s_cosolvent, b_m_cosolvent, b_s_cosolvent
 from Z_prk import Z_PRK
-from P_sat import P_sat
 
 import sympy as sp
 import numpy as np
@@ -22,12 +21,12 @@ def find_solubility_cosol(y_co, v_solid, P_num, P_sub_num, R_num, T_num, a_1, a_
     y_init = P_sub_num/P_num
     display = disp
 
-    a_mix_num_f = a_m_cosolvent(1 - y_init - y_co, y_init, a_1, a_2, a_3, k_num)
-    b_mix_num_f = b_m_cosolvent(1 - y_init- y_co, y_init, b_1, b_2, b_3, l_num)
+    a_mix_num_f = a_m_cosolvent(1 - y_init - y_co, y_init, a_1, a_2, a_3, k_num, display)
+    b_mix_num_f = b_m_cosolvent(1 - y_init- y_co, y_init, b_1, b_2, b_3, l_num, display)
 
     
-    a_s_num_f = a_s_cosolvent(y_init, 1 - y_init - y_co, a_2, a_1, a_3, k_num)
-    b_s_num_f = b_s_cosolvent(y_init, 1 - y_init - y_co, b_2, b_1, b_3, b_mix_num_f, l_num)
+    a_s_num_f = a_s_cosolvent(y_init, 1 - y_init - y_co, a_2, a_1, a_3, k_num, display)
+    b_s_num_f = b_s_cosolvent(y_init, 1 - y_init - y_co, b_2, b_1, b_3, b_mix_num_f, l_num, display)
 
     Z_f = Z_PRK(P_num, T_num, R_num, a_mix_num_f, b_mix_num_f)
 
@@ -37,21 +36,21 @@ def find_solubility_cosol(y_co, v_solid, P_num, P_sub_num, R_num, T_num, a_1, a_
 
     else:
         Z_num_f = np.amax(Z_f)
-        ln_phi_scf_num_f = fugacity_scf(P_num, R_num, T_num, Z_num_f, a_mix_num_f, b_mix_num_f, a_s_num_f, b_2)  
+        ln_phi_scf_num_f = fugacity_scf(P_num, R_num, T_num, Z_num_f, a_mix_num_f, b_mix_num_f, a_s_num_f, b_2, display)  
         y_solu = y_init*np.exp(v_solid * (P_num - P_sub_num)/(R_num*T_num))/np.exp(ln_phi_scf_num_f)
     
     y = [y_init, y_solu]
     
     while np.abs(y[-1] - y[-2])/y[-1]> 0.001:        
         
-        a_mix_num = a_m_cosolvent(1 - y[-1] - y_co, y[-1], a_1, a_2, a_3, k_num)
-        b_mix_num = b_m_cosolvent(1 - y[-1] - y_co, y[-1], b_1, b_2, b_3, l_num)
-        a_s_num = a_s_cosolvent(y[-1], 1-y[-1]-y_co, a_2, a_1, a_3, k_num)
-        b_s_num = b_s_cosolvent(y[-1], 1-y[-1]-y_co, b_2, b_1, b_3, b_mix_num, l_num)
+        a_mix_num = a_m_cosolvent(1 - y[-1] - y_co, y[-1], a_1, a_2, a_3, k_num, display)
+        b_mix_num = b_m_cosolvent(1 - y[-1] - y_co, y[-1], b_1, b_2, b_3, l_num, display)
+        a_s_num = a_s_cosolvent(y[-1], 1-y[-1]-y_co, a_2, a_1, a_3, k_num, display)
+        b_s_num = b_s_cosolvent(y[-1], 1-y[-1]-y_co, b_2, b_1, b_3, b_mix_num, l_num, display)
         
         Z_num = np.amax(Z_PRK(P_num, T_num, R_num, a_mix_num, b_mix_num))
                 
-        ln_phi_scf_num_f = fugacity_scf(P_num, R_num, T_num, Z_num, a_mix_num, b_mix_num, a_s_num, b_2) 
+        ln_phi_scf_num_f = fugacity_scf(P_num, R_num, T_num, Z_num, a_mix_num, b_mix_num, a_s_num, b_2, display) 
         y_sol = y_init*np.exp(v_solid * (P_num - P_sub_num)/(R_num*T_num))/np.exp(ln_phi_scf_num_f)
 
         y.append(y_sol)
@@ -85,11 +84,11 @@ def find_solubility(v_solid, P_num, P_sub_num, R_num, T_num, a_1, a_2, b_1, b_2,
     y_init = P_sub_num/P_num
     display = disp
 
-    a_mix_num_f = a_mix(1 - y_init, y_init, a_1, a_2, k_num)
-    b_mix_num_f = b_mix(1 - y_init, y_init, b_1, b_2, l_num)
+    a_mix_num_f = a_mix(1 - y_init, y_init, a_1, a_2, k_num, display)
+    b_mix_num_f = b_mix(1 - y_init, y_init, b_1, b_2, l_num, display)
 
-    a_s_num_f = a_star(y_init, 1 - y_init, a_2, a_1, k_num)
-    b_s_num_f = b_star(y_init, 1 - y_init, b_2, b_1, b_mix_num_f, l_num)
+    a_s_num_f = a_star(y_init, 1 - y_init, a_2, a_1, k_num, display)
+    b_s_num_f = b_star(y_init, 1 - y_init, b_2, b_1, b_mix_num_f, l_num, display)
 
     Z_f = Z_PRK(P_num, T_num, R_num, a_mix_num_f, b_mix_num_f)
 
@@ -98,22 +97,22 @@ def find_solubility(v_solid, P_num, P_sub_num, R_num, T_num, a_1, a_2, b_1, b_2,
 
     else:
         Z_num_f = np.amax(Z_f)
-        ln_phi_scf_num_f = fugacity_scf(P_num, R_num, T_num, Z_num_f, a_mix_num_f, b_mix_num_f, a_s_num_f, b_s_num_f)  
+        ln_phi_scf_num_f = fugacity_scf(P_num, R_num, T_num, Z_num_f, a_mix_num_f, b_mix_num_f, a_s_num_f, b_s_num_f, display)  
         y_solu = y_init*np.exp(v_solid * (P_num - P_sub_num)/(R_num*T_num))/np.exp(ln_phi_scf_num_f)
 
     y = [y_init, y_solu]
     
     while np.abs(y[-1] - y[-2])/y[-1]> 0.001:        
         
-        a_mix_num = a_mix(1 - y[-1], y[-1], a_1, a_2, k_num)
-        b_mix_num = b_mix(1 - y[-1], y[-1], b_1, b_2, l_num)
+        a_mix_num = a_mix(1 - y[-1], y[-1], a_1, a_2, k_num, display)
+        b_mix_num = b_mix(1 - y[-1], y[-1], b_1, b_2, l_num, display)
 
-        a_s_num = a_star(y[-1], 1-y[-1], a_2, a_1, k_num)
-        b_s_num = b_star(y[-1], 1-y[-1], b_2, b_1, b_mix_num, l_num)
+        a_s_num = a_star(y[-1], 1-y[-1], a_2, a_1, k_num, display)
+        b_s_num = b_star(y[-1], 1-y[-1], b_2, b_1, b_mix_num, l_num, display)
 
 
         Z_num = np.amax(Z_PRK(P_num, T_num, R_num, a_mix_num, b_mix_num))
-        ln_phi_scf_num_f = fugacity_scf(P_num, R_num, T_num, Z_num, a_mix_num, b_mix_num, a_s_num, b_s_num) 
+        ln_phi_scf_num_f = fugacity_scf(P_num, R_num, T_num, Z_num, a_mix_num, b_mix_num, a_s_num, b_s_num, display) 
         y_sol = y_init*np.exp(v_solid * (P_num - P_sub_num)/(R_num*T_num))/np.exp(ln_phi_scf_num_f)
 
         y.append(y_sol)
