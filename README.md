@@ -15,9 +15,6 @@ the fugacity coefficient of the pure solid in the supercritical phase which can 
 
 The thermodynamic relation of  the Φ<sub>scf</sub> was calculated using the combined PR EoS and vdW mixing rules and the final form was written below. 
 
-<p align="center"><img src="https://latex.codecogs.com/gif.latex?O_t=\displaystyle - \log{\left(- \frac{P b}{R T} + Z_{1} \right)} + \frac{b_{s} \left(Z_{1} - 1\right)}{b} - \frac{\sqrt{2} a \left(- \frac{b_{s}}{b} + \frac{a_{s}}{a}\right) \log{\left(\frac{\frac{P b \left(1 + \sqrt{2}\right)}{R T} + Z_{1}}{\frac{P b \left(1 - \sqrt{2}\right)}{R T} + Z_{1}} \right)}}{4 R T b}" /> </p>
+<p align="center"><img src="https://render.githubusercontent.com/render/math?math=\textbf \color{gray} \displaystyle - \log{\left(- \frac{P b}{R T} + Z_{1} \right)} + \frac{b_{s} \left(Z_{1} - 1\right)}{b} - \frac{\sqrt{2} a \left(- \frac{b_{s}}{b} + \frac{a_{s}}{a}\right) \log{\left(\frac{\frac{P b \left(1 + \sqrt{2}\right)}{R T} + Z_{1}}{\frac{P b \left(1 - \sqrt{2}\right)}{R T} + Z_{1}} \right)}}{4 R T b}"></p>
 
 
-`./Data/Feature Link.txt`
-
-<img src="https://render.githubusercontent.com/render/math?math=\textbf \color{gray} \displaystyle \sum_{\substack{0 \leq j \leq 1\\0 \leq i \leq 1}} {a}_{\left( i, \  j\right)} {y}_{i} {y}_{j}">
