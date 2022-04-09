@@ -4,6 +4,8 @@
 
 Recently, the applications of supercritical fluids (SCF) as a substitution of organic solvents in several conventional reaction, extraction and crystallization processes have gained attention due to the advantages which it may address in the controlability of the system. SCFs exist in a supercritical state, the state where temperature and pressure are above a critical point. Beyond the critical point, SCFs begin to demonstrate properties of a combined liquid and gaseous state which can have diffusion rates close to gases and liquid-like densities allowing applications as reaction and seperation mediums. Furthermore, minor changes in temperatures and pressures around the critical point can provide a great controllability for the processes. Hereby, the properties such as density and solubility can be modulated with small changes in the process conditions and in this manner, a solute which is dissolved in a SCF can be easily precipitated reducing the pressure as the SCF is transitioning to the gas phase. The gas can be conveniently recycled for repeated use [[1]](#1).
 
+
+
 ## Solubility Calculations
 
 In this repository, solubility of the organic compounds of ibubrofen and biphenyl in the supercritical CO<sub>2</sub> were determined using PR-EoS and vdW mixing rules. 
@@ -35,11 +37,18 @@ In the equation, the parameters, a in the attractive term and the parameter b in
 
 <p align="center"><img src="https://latex.codecogs.com/svg.image?\inline&space;\LARGE&space;\bg{white}\color{Gray}{b}_{i,j}&space;=&space;\left(0.5&space;-&space;0.5&space;{l}_{i,j}\right)&space;\left(b_{i}&space;&plus;&space;b_{j}\right)" /></p>
 
-In the equations, a<sub>i</sub>, a<sub>j</sub>, b<sub>i</sub>, b<sub>j</sub> are calculated according to PRK EoS for each component. Also, binary interaction parameters of k and l can be found fitting an experimental equilibrium data to PR EoS. More detailed derivations of these paramaters could be found in the book of "Introduction to Supercritical Fluids A Spreadsheet-based Approach" [[3]](#3). 
+In the equations, a<sub>i</sub>, a<sub>j</sub>, b<sub>i</sub>, b<sub>j</sub> are calculated according to PRK EoS for each component. Also, binary interaction parameters of k and l can be found fitting an experimental equilibrium data to PR EoS. More detailed derivations of these paramaters could be found in the book of "Introduction to Supercritical Fluids A Spreadsheet-based Approach" [[4]](#4). 
 
-In this repo, the binary interaction parameters for ibuprofen and CO<sub>2</sub>, k and l, were calculated by the minimization of Average Absolute Relative Deviation, AARD(%) using the solubility from the study of "Measurement and Correlation of Ibuprofen in Supercritical Carbon Dioxide Using Stryjek and Vera EOS" [[4]](#4). The calculation of the binary parameters interaction parameters by the optimization of AARD(%) can be found in `binary_interaction_parameters_ibuprofen.ipynb`.
+In this repo, the binary interaction parameters for ibuprofen and CO<sub>2</sub>, k and l, were calculated by the minimization of Average Absolute Relative Deviation, AARD(%) using the solubility from the study of "Measurement and Correlation of Ibuprofen in Supercritical Carbon Dioxide Using Stryjek and Vera EOS" [[5]](#5). The calculation of the binary parameters interaction parameters by the optimization of AARD(%) can be found in `binary_interaction_parameters_ibuprofen.ipynb`.
 
 <p align="center"><img src="https://latex.codecogs.com/svg.image?\inline&space;\LARGE&space;\bg{white}\color{Gray}{AARD}&space;=&space;\displaystyle&space;\frac{100&space;\sum_{i=1}^{N}&space;\frac{\left|{{y_{cal}}_{i}&space;-&space;{y_{exp}}_{i}}\right|}{{y_{exp}}_{i}}}{N}" /></p>
+
+## Results
+
+<p align="center"><img src="https://github.com/AnilOz/solubility_in_sc_CO2/blob/master/Figures/y_ibu.png" /></p>
+<p align="center"><img src="https://github.com/AnilOz/solubility_in_sc_CO2/blob/master/Figures/y_biphenyl.png" /></p>
+<p align="center"><img src="https://github.com/AnilOz/solubility_in_sc_CO2/blob/master/Figures/y_biphenyl_tol.png" /></p>
+<p align="center"><img src="https://github.com/AnilOz/solubility_in_sc_CO2/blob/master/Figures/y_biphenyl_2.png" /></p>
 
 ## References
 <a id="1">[1]</a> 
@@ -53,7 +62,7 @@ Pages 379-411,
 ISBN 9780128173886,
 https://doi.org/10.1016/B978-0-12-817388-6.00016-7.
 (https://www.sciencedirect.com/science/article/pii/B9780128173886000167)
-</br></br><a id="3">[3]</a> 
+</br></br><a id="4">[4]</a> 
 Richard Smith, Hiroshi Inomata, Cor Peters,
 Chapter 6 - Equations of State and Formulations for Mixtures,
 Editor(s): Richard Smith, Hiroshi Inomata, Cor Peters,
@@ -66,5 +75,5 @@ ISSN 2212-0505,
 ISBN 9780444522153,
 https://doi.org/10.1016/B978-0-444-52215-3.00006-4.
 (https://www.sciencedirect.com/science/article/pii/B9780444522153000064)
-</br></br><a id="4">[4]</a> 
+</br></br><a id="5">[5]</a> 
 "Measurement and Correlation of Ibuprofen in Supercritical Carbon Dioxide Using Stryjek and Vera EOS". Iranian Journal of Chemical Engineering(IJChE), 7, 4, 2010, 42-49.
