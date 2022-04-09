@@ -1,7 +1,7 @@
 import sympy as sp
 import numpy as np
 
-from IPython.display import display
+from IPython.display import display, Latex
 
 
 
@@ -45,6 +45,8 @@ def fugacity_scf(P_num, R_num, T_num, Z_num, a_num, b_num, a_s_num, b_s_num, dis
         second_term = sp.Integral(ln_phi_scf_2.args[1].args[3].args[0].args[2], (V,sp.oo,V))
         ln_phi_scf_3 = first_term.doit() + second_term.doit() + (Z-1) + - sp.ln(Z)
         ln_phi_scf_4 = sp.simplify(ln_phi_scf_3.subs(V, Z*n*R*T/P))
+
+        print("\nCalculation of the fugacity of the component in supercritical phase\n")
         display(ln_phi_scf, ln_phi_scf_1, ln_phi_scf_2, ln_phi_scf_3, ln_phi_scf_4, ln_phi_scf_5, ln_phi_scf_6)
 
 

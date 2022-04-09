@@ -1,6 +1,9 @@
 import numpy as np
+import sympy as sp
 import matplotlib.pyplot as plt
 import pyrenn as prn
+from IPython.display import display
+
 
 def evaluate_model(y_test, prediction):
     train_error = np.abs(y_test - prediction)
@@ -33,5 +36,22 @@ def model_predictions(T_num, P_num, T_c_num, P_c_num, w_num, v_num, path):
     return y_naphtalene
 
 
+def AARD(y_cal_num, y_exp_num, disp=False):
+    
+    displayer = disp
 
+    N, i = sp.symbols('N i')
+    y_cal = sp.IndexedBase('y_cal')
+    y_exp = sp.IndexedBase('y_exp')
 
+    AARD_0 = 100/N*sp.Sum(sp.Abs(y_cal[i] - y_exp[i])/y_exp[i], (i,0,N-1))
+    AARD_1 = 100/N*sp.Sum(sp.Abs(y_cal[i] - y_exp[i])/y_exp[i], (i,0,N-1)).doit()
+    AARD_fun = sp.lambdify([y_cal, y_exp, N], AARD_1, 'numpy')
+    AARD_num = AARD_fun(y_cal_num, y_exp_num, len(y_exp_num))
+    
+
+    if displayer == True:
+        display(AARD_0, AARD_1)
+
+    return AARD_num
+    

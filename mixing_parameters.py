@@ -47,6 +47,7 @@ def a_mix(y1, y2, a_1_num, a_2_num, k_num, disp=False):
     display_equations = disp
 
     if display_equations==True:
+        print("\nCalculation of constant a_mix in Van der Vaals mixing rules\n")
         display(a_mix, a_mix_1, a_mix_2, a_mix_num)
 
     return a_mix_num
@@ -80,6 +81,7 @@ def a_m_cosolvent(y1, y2, a_1_num, a_2_num, a_3_num, k_num, disp=False):
     display_equations = disp
 
     if display_equations==True:
+        print("\nCalculation of constant a_mix in Van der Vaals mixing rules for three component system \n ")
         display(a_mix, a_mix_1, a_mix_2, a_mix_cosl)
 
     return a_mix_cosl
@@ -186,6 +188,7 @@ def b_m_cosolvent(y1, y2, b_1_num, b_2_num, b_3_num, l_num, disp=False):
     display_equations = disp
 
     if display_equations==True:
+        print("\nCalculation of constant b_mix in Van der Vaals mixing rules for three component system \n")
         display(b_mix, b_mix_1, b_mix_2, b_mix_num)
 
     return b_mix_num
@@ -219,6 +222,8 @@ def b_mix(y1, y2, b_1_num, b_2_num, l_num, disp=False):
     display_equations = disp
 
     if display_equations==True:
+
+        print("\nCalculation of constant b_mix in Van der Vaals mixing rules \n")
         display(b_mix, b_mix_1, b_mix_2, b_mix_num)
 
 
