@@ -24,35 +24,35 @@ In this repository, solubility of the organic compounds of ibubrofen and bipheny
 Solubility of the organic compounds are derived from the equation:
 
 
-<p align="center"><img src="https://latex.codecogs.com/png.image?\inline&space;\LARGE&space;\bg{white}\color{Black}\displaystyle&space;y_{solubility}&space;=&space;\frac{y_{ideal}&space;e^{\frac{v_{sol}&space;\left(P&space;-&space;P_{sub}\right)}{R}}}{\phi_{scf}}" /></p>
+<p align="center"><img src="https://latex.codecogs.com/png.image?\inline&space;\large&space;\bg{white}\color{Black}\displaystyle&space;y_{solubility}&space;=&space;\frac{y_{ideal}&space;e^{\frac{v_{sol}&space;\left(P&space;-&space;P_{sub}\right)}{R}}}{\phi_{scf}}" /></p>
 
 In the equation above, T is the equilibrium temperature, P the equilibrium pressure, v<sub>sol</sub> the pure solid molar volume of the solute, Φ<sub>scf</sub> 
 the fugacity coefficient of the pure solid in the supercritical phase which can be obtained from the following equation. 
 
 
-<p align="center"><img src="https://latex.codecogs.com/svg.image?\inline&space;\LARGE&space;\bg{white}\color{Gray}&space;\displaystyle&space;\ln{\left(\phi_{scf}&space;\right)}&space;=&space;-\ln{\left(Z&space;\right)}&space;-\int_{V}^{\infty}&space;\left(&space;\frac{dP}{dn_i}&space;-&space;\frac{1}{V}\right)\,&space;dV&space;" /></p>
+<p align="center"><img src="https://latex.codecogs.com/png.image?\inline&space;\large&space;\bg{white}\color{Black}&space;\displaystyle&space;\ln{\left(\phi_{scf}&space;\right)}&space;=&space;-\ln{\left(Z&space;\right)}&space;-\int_{V}^{\infty}&space;\left(&space;\frac{dP}{dn_i}&space;-&space;\frac{1}{V}\right)\,&space;dV&space;" /></p>
 
 The thermodynamic relation of  the Φ<sub>scf</sub> was calculated using the combined PR EoS and vdW mixing rules in `fugacity_coeff.py` and the final form can derived as below.
 
-<p align="center"><img src="https://latex.codecogs.com/svg.image?\inline&space;\LARGE&space;\bg{white}\color{Gray}\displaystyle&space;-&space;\ln{\left(-&space;\frac{P&space;b}{R&space;T}&space;&plus;&space;Z_{1}&space;\right)}&space;&plus;&space;\frac{b_{s}&space;\left(Z_{1}&space;-&space;1\right)}{b}&space;-&space;\frac{\sqrt{2}&space;a&space;\left(-&space;\frac{b_{s}}{b}&space;&plus;&space;\frac{a_{s}}{a}\right)&space;\ln{\left(\frac{\frac{P&space;b&space;\left(1&space;&plus;&space;\sqrt{2}\right)}{R&space;T}&space;&plus;&space;Z_{1}}{\frac{P&space;b&space;\left(1&space;-&space;\sqrt{2}\right)}{R&space;T}&space;&plus;&space;Z_{1}}&space;\right)}}{4&space;R&space;T&space;b}" /></p>
+<p align="center"><img src="https://latex.codecogs.com/png.image?\inline&space;\large&space;\bg{white}\color{Black}\displaystyle&space;-&space;\ln{\left(-&space;\frac{P&space;b}{R&space;T}&space;&plus;&space;Z_{1}&space;\right)}&space;&plus;&space;\frac{b_{s}&space;\left(Z_{1}&space;-&space;1\right)}{b}&space;-&space;\frac{\sqrt{2}&space;a&space;\left(-&space;\frac{b_{s}}{b}&space;&plus;&space;\frac{a_{s}}{a}\right)&space;\ln{\left(\frac{\frac{P&space;b&space;\left(1&space;&plus;&space;\sqrt{2}\right)}{R&space;T}&space;&plus;&space;Z_{1}}{\frac{P&space;b&space;\left(1&space;-&space;\sqrt{2}\right)}{R&space;T}&space;&plus;&space;Z_{1}}&space;\right)}}{4&space;R&space;T&space;b}" /></p>
 
 
 
 In the equation, the parameters, a in the attractive term and the parameter b in the repulsive term coming from PR EoS are replaced by the parameters, a<sub>mix</sub> and b<sub>mix</sub> in vdW mixing rules. All needed functions to calculate these parameters are available in `mixing_parameter.py`.
 
-<p align="center"><img src="https://latex.codecogs.com/svg.image?\inline&space;\LARGE&space;\bg{white}\color{Gray}a_{mix}&space;=&space;\displaystyle&space;\sum_{\substack{0&space;\leq&space;j&space;\leq&space;1\\0&space;\leq&space;i&space;\leq&space;1}}&space;{a}_{\left(&space;i,&space;\&space;j\right)}&space;{y}_{i}&space;{y}_{j}" /></p>
+<p align="center"><img src="https://latex.codecogs.com/png.image?\inline&space;\large&space;\bg{white}\color{Black}a_{mix}&space;=&space;\displaystyle&space;\sum_{\substack{0&space;\leq&space;j&space;\leq&space;1\\0&space;\leq&space;i&space;\leq&space;1}}&space;{a}_{\left(&space;i,&space;\&space;j\right)}&space;{y}_{i}&space;{y}_{j}" /></p>
 
-<p align="center"><img src="https://latex.codecogs.com/svg.image?\inline&space;\LARGE&space;\bg{white}\color{Gray}a_{mix}&space;=&space;&space;\sqrt{a_{i}&space;a_{j}}&space;\left(1&space;-&space;{k}_{i,j}\right)" /></p>
+<p align="center"><img src="https://latex.codecogs.com/png.image?\inline&space;\large&space;\bg{white}\color{Black}a_{mix}&space;=&space;&space;\sqrt{a_{i}&space;a_{j}}&space;\left(1&space;-&space;{k}_{i,j}\right)" /></p>
 
-<p align="center"><img src="https://latex.codecogs.com/svg.image?\inline&space;\LARGE&space;\bg{white}\color{Gray}{b}_{mix}&space;=&space;\displaystyle&space;\sum_{\substack{0&space;\leq&space;j&space;\leq&space;1\\0&space;\leq&space;i&space;\leq&space;1}}&space;{b}_{\left(&space;i,&space;\&space;j\right)}&space;{y}_{i}&space;{y}_{j}" /></p>
+<p align="center"><img src="https://latex.codecogs.com/png.image?\inline&space;\large&space;\bg{white}\color{Black}{b}_{mix}&space;=&space;\displaystyle&space;\sum_{\substack{0&space;\leq&space;j&space;\leq&space;1\\0&space;\leq&space;i&space;\leq&space;1}}&space;{b}_{\left(&space;i,&space;\&space;j\right)}&space;{y}_{i}&space;{y}_{j}" /></p>
 
-<p align="center"><img src="https://latex.codecogs.com/svg.image?\inline&space;\LARGE&space;\bg{white}\color{Gray}{b}_{i,j}&space;=&space;\left(0.5&space;-&space;0.5&space;{l}_{i,j}\right)&space;\left(b_{i}&space;&plus;&space;b_{j}\right)" /></p>
+<p align="center"><img src="https://latex.codecogs.com/png.image?\inline&space;\large&space;\bg{white}\color{Black}{b}_{i,j}&space;=&space;\left(0.5&space;-&space;0.5&space;{l}_{i,j}\right)&space;\left(b_{i}&space;&plus;&space;b_{j}\right)" /></p>
 
 In the equations, a<sub>i</sub>, a<sub>j</sub>, b<sub>i</sub>, b<sub>j</sub> are calculated according to PRK EoS for each component. Also, binary interaction parameters of k and l can be found fitting an experimental equilibrium data to PR EoS. More detailed derivations of these paramaters could be found in the book of "Introduction to Supercritical Fluids A Spreadsheet-based Approach" [[4]](#4). 
 
 In this repo, the binary interaction parameters for ibuprofen and CO<sub>2</sub>, k and l, were calculated by the minimization of Average Absolute Relative Deviation, AARD(%) using the solubility from the study of "Measurement and Correlation of Ibuprofen in Supercritical Carbon Dioxide Using Stryjek and Vera EOS" [[5]](#5). The calculation of the binary parameters interaction parameters by the optimization of AARD(%) can be found in `binary_interaction_parameters_ibuprofen.ipynb`.
 
-<p align="center"><img src="https://latex.codecogs.com/svg.image?\inline&space;\LARGE&space;\bg{white}\color{Gray}{AARD}&space;=&space;\displaystyle&space;\frac{100&space;\sum_{i=1}^{N}&space;\frac{\left|{{y_{cal}}_{i}&space;-&space;{y_{exp}}_{i}}\right|}{{y_{exp}}_{i}}}{N}" /></p>
+<p align="center"><img src="https://latex.codecogs.com/png.image?\inline&space;\large&space;\bg{white}\color{Black}{AARD}&space;=&space;\displaystyle&space;\frac{100&space;\sum_{i=1}^{N}&space;\frac{\left|{{y_{cal}}_{i}&space;-&space;{y_{exp}}_{i}}\right|}{{y_{exp}}_{i}}}{N}" /></p>
 
 ## Results
 
