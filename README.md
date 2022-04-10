@@ -60,7 +60,7 @@ In this repo, the binary interaction parameters for ibuprofen and CO<sub>2</sub>
 
 <p align="center"><img src="https://github.com/AnilOz/solubility_in_sc_CO2/blob/master/Figures/y_ibu.png" /></p>
  
-- Biphenyl solubility in scCO2 was studied at 40°C and in a pressure range of 0.1 - 20 in  `Biphenyl_Solubility_in_scCO2_with_Cosolvent_Ethanol.ipynb`.
+- Biphenyl solubility in scCO2 was studied at 40°C and in a pressure range of 0.1 - 20 in  `Biphenyl_Solubility_in_scCO2_with_Cosolvent_Toluene.ipynb`.
 <p align="center"><img src="https://github.com/AnilOz/solubility_in_sc_CO2/blob/master/Figures/y_biphenyl_tol.png" /></p>
 
 - Also, the solubility of biphenyl was investigated in the presence of 3% toluene to see the effects of cosolvent in the solubility.
