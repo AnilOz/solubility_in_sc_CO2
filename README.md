@@ -4,6 +4,17 @@
 
 Recently, the applications of supercritical fluids (SCF) as a substitution of organic solvents in several conventional reaction, extraction and crystallization processes have gained attention due to the advantages which it may address in the controlability of the system. SCFs exist in a supercritical state, the state where temperature and pressure are above a critical point. Beyond the critical point, SCFs begin to demonstrate properties of a combined liquid and gaseous state which can have diffusion rates close to gases and liquid-like densities allowing applications as reaction and seperation mediums. Furthermore, minor changes in temperatures and pressures around the critical point can provide a great controllability for the processes. Hereby, the properties such as density and solubility can be modulated with small changes in the process conditions and in this manner, a solute which is dissolved in a SCF can be easily precipitated reducing the pressure as the SCF is transitioning to the gas phase. The gas can be conveniently recycled for repeated use [[1]](#1).
 
+One of the applications where SCFs stands forward is the particle design of pharmaceutical compunds. A great proportion of the pharmaceutical compunds in solid form has poor water solubility. So, in order to increase the solubility of the pharmaceutical ingredient for the ease of drug absorbtion, the size of the pharmaceutical compund is usually reduced by several **micronization** techniques such as crushing, milling recrytallization, spray drying etc. Mechanical aproaches like crushing and milling are generally undesirable since they induce the heat formation which may degrade the compounds. Also, in the recrystallization, the use of organic solvents and anti-solvents can be costly and the residues of solvent on the pharmaceutical compunds can be toxic [[2]](#2). Hence, lately, the novel and green techniques, which SCFs are employed, such as **Rapid Expansion of Supercritical Solution (RESS)**, **Supercritical Anti-Solvent (SAS)** and **Gas Anti-Solvent (GAS)** have come to fore (See [[3]](#3) for more detail). These new methods are also favorable since the supercritical solvent can be easily recovered for using repeatedly minor modulation. Moreover, since the solvent can be recovered in differen phase, the risk of toxic residue remaining on the drug compound is avoided.
+
+In most of the processes which include SCFs, CO<sub>2</sub> is preferred as supercritical fluid since its intoxicity and mild critical point conditions which favors processes that contains heat sensitive materials. Hence, in this repo, CO<sub>2</sub> is employed as scf for the solubility calculations as well.
+
+## Dependencies
+-symyp
+-numpy
+-pandas
+-scipy
+-matplotlib
+-openpyxl
 
 
 ## Solubility Calculations
@@ -13,7 +24,7 @@ In this repository, solubility of the organic compounds of ibubrofen and bipheny
 Solubility of the organic compounds are derived from the equation:
 
 
-<p align="center"><img src="https://latex.codecogs.com/svg.image?\inline&space;\LARGE&space;\bg{white}\color{Gray}\displaystyle&space;y_{solubility}&space;=&space;\frac{y_{ideal}&space;e^{\frac{v_{sol}&space;\left(P&space;-&space;P_{sub}\right)}{R}}}{\phi_{scf}}" /></p>
+<p align="center"><img src="https://latex.codecogs.com/png.image?\inline&space;\LARGE&space;\bg{white}\color{Black}\displaystyle&space;y_{solubility}&space;=&space;\frac{y_{ideal}&space;e^{\frac{v_{sol}&space;\left(P&space;-&space;P_{sub}\right)}{R}}}{\phi_{scf}}" /></p>
 
 In the equation above, T is the equilibrium temperature, P the equilibrium pressure, v<sub>sol</sub> the pure solid molar volume of the solute, Φ<sub>scf</sub> 
 the fugacity coefficient of the pure solid in the supercritical phase which can be obtained from the following equation. 
@@ -62,7 +73,29 @@ Pages 379-411,
 ISBN 9780128173886,
 https://doi.org/10.1016/B978-0-12-817388-6.00016-7.
 (https://www.sciencedirect.com/science/article/pii/B9780128173886000167)
-</br></br><a id="4">[4]</a> 
+</br></br><a id="2">[2]</a> 
+Hamidreza Bagheri, G. Ali Mansoori, Hassan Hashemipour,
+A novel approach to predict drugs solubility in supercritical solvents for RESS process using various cubic EoS-mixing rule,
+Journal of Molecular Liquids,
+Volume 261,
+2018,
+Pages 174-188,
+ISSN 0167-7322,
+https://doi.org/10.1016/j.molliq.2018.03.081.
+(https://www.sciencedirect.com/science/article/pii/S0167732218311164)
+</br></br><a id="3">[3]</a> 
+Mojhdeh Baghbanbashi, Naghmeh Hadidi, Gholamreza Pazuki,
+Chapter 10 - Solubility of pharmaceutical compounds in supercritical carbon dioxide: Application, experimental, and mathematical modeling,
+Editor(s):  Inamuddin, Abdullah M. Asiri, Arun M. Isloor,
+Green Sustainable Process for Chemical and Environmental Engineering and Science,
+Elsevier,
+2020,
+Pages 185-254,
+ISBN 9780128173886,
+https://doi.org/10.1016/B978-0-12-817388-6.00010-6.
+(https://www.sciencedirect.com/science/article/pii/B9780128173886000106)
+</br></br>
+<a id="4">[4]</a> 
 Richard Smith, Hiroshi Inomata, Cor Peters,
 Chapter 6 - Equations of State and Formulations for Mixtures,
 Editor(s): Richard Smith, Hiroshi Inomata, Cor Peters,
@@ -75,5 +108,6 @@ ISSN 2212-0505,
 ISBN 9780444522153,
 https://doi.org/10.1016/B978-0-444-52215-3.00006-4.
 (https://www.sciencedirect.com/science/article/pii/B9780444522153000064)
-</br></br><a id="5">[5]</a> 
+</br></br>
+<a id="5">[5]</a> 
 "Measurement and Correlation of Ibuprofen in Supercritical Carbon Dioxide Using Stryjek and Vera EOS". Iranian Journal of Chemical Engineering(IJChE), 7, 4, 2010, 42-49.
