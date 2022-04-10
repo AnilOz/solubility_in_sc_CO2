@@ -9,12 +9,12 @@ One of the applications where SCFs stands forward is the particle design of phar
 In most of the processes which include SCFs, CO<sub>2</sub> is preferred as supercritical fluid since its intoxicity and mild critical point conditions which favors processes that contains heat sensitive materials. Hence, in this repo, CO<sub>2</sub> is employed as scf for the solubility calculations as well.
 
 ## Dependencies
--symyp
--numpy
--pandas
--scipy
--matplotlib
--openpyxl
+- sympy
+- numpy
+- pandas
+- scipy
+- matplotlib
+- openpyxl
 
 
 ## Solubility Calculations
